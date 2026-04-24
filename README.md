@@ -137,8 +137,7 @@ This does **not** directly prove malicious behavior. It shows that behavioral se
 .
 ├── README.md
 ├── requirements.txt
-├── src/
-│   └── analysis_pipeline.py
+├── insider++.py
 └── assets/
     ├── correlation_heatmap.png
     ├── silhouette_standard.png
