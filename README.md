@@ -137,7 +137,7 @@ This does **not** directly prove malicious behavior. It shows that behavioral se
 .
 ├── README.md
 ├── requirements.txt
-├── insider++.py
+├── Insider++.py
 └── assets/
     ├── correlation_heatmap.png
     ├── silhouette_standard.png
@@ -154,7 +154,7 @@ This does **not** directly prove malicious behavior. It shows that behavioral se
 
 ```bash
 pip install -r requirements.txt
-python insider++.py
+python Insider++.py
 ```
 
 The script generates figures from the behavioral datasets and saves them to an output directory.
