@@ -110,7 +110,7 @@ This step checks whether the clustering structure is stable and learnable, and h
 - Provides internal validation by checking if clusters can be learned and reproduced.
 - Confirms that the segmentation is stable and well-defined.
 - Identifies the most important features driving cluster separation.
-- Enables a faster and simpler way to assign new users to clusters using a classifier instead of K-Means (For future work and implementation in real life settings).
+- Enables a faster and simpler way to assign new users to clusters using a classifier instead of K-Means (For future work and implementation in real life settings). <br>
 **Limitations:**
 - Uses pseudo-labels, not real ground truth → only measures internal consistency.
 - High performance does not mean clusters reflect real-world risk or behavior.
