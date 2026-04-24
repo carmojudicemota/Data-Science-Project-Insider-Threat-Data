@@ -154,7 +154,7 @@ This does **not** directly prove malicious behavior. It shows that behavioral se
 
 ```bash
 pip install -r requirements.txt
-python src/analysis_pipeline.py
+python insider++.py
 ```
 
 The script generates figures from the behavioral datasets and saves them to an output directory.
