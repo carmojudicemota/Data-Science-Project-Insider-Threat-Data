@@ -14,7 +14,7 @@ This work uses activity-based features built from user logon, device, email, and
 
 ## Project goal
 
-The objective is to identify meaningful user behavior patterns from system activity logs and examine whether those patterns can be consistently separated and reproduced — without relying on pre-existing labels.
+The objective is to identify meaningful user behavior patterns from system activity logs and examine whether those patterns can be consistently separated and reproduced, without relying on pre-existing labels.
 
 The analysis focuses on questions such as:
 
@@ -49,7 +49,7 @@ The analysis focuses on questions such as:
 
 ### Phase 2: Classification (Supervised Validation)
 
-**Purpose:** Not redundancy — internal validity check
+**Purpose:** Not redundancy: internal validity check + better interpretability + pratical use
 
 **Method:**
 - Pseudo-labels from K-Means → train classifiers to reproduce segmentation
@@ -94,7 +94,7 @@ The analysis focuses on questions such as:
 - **SVM:** Best absolute performance, but marginal gain doesn't justify complexity
 - **Random Forest / Decision Tree:** Most interpretable for understanding feature importance
 
-**Key insight:** High performance on pseudo-labels does NOT imply real threat detection — only that segmentation is stable, reproducible, and has a simple boundary.
+**Key insight:** High performance on pseudo-labels does NOT imply real threat detection, only that segmentation is stable, reproducible, and has a simple boundary (which is coherent with the use of K-means)
 
 ### Feature importance (what separates clusters?)
 
@@ -163,7 +163,7 @@ The analysis focuses on questions such as:
 
 ### Model validation
 - The discovered clusters are highly reproducible (F1 > 0.98 across all models)
-- Linear boundary structure: LR and SVM outperform non-linear models only marginally
+- Linear boundary structure: LR outperforms DT, RF and SVM outperforms LR only marginally
 - Decision Tree and Random Forest provide key interpretability insights
 - High performance on pseudo-labels = internal consistency, NOT real-world validity
 
@@ -182,7 +182,7 @@ The analysis focuses on questions such as:
 
 ---
 
-## Limitations (full)
+## Limitations 
 
 1. **No external validation:** Deliberately ignored CERT ground truth labels to replicate real-world scenarios → cannot claim real threat detection
 2. **Synthetic dataset:** CERT is partially synthetic and oriented toward insider threat problems
@@ -209,13 +209,39 @@ This work does **not** replace human analysts. It provides a **pre-alert system*
 
 **Value proposition:**
 - Filter noise so signal (whether a dedicated admin or a true insider) receives investigation
-- Not every intensive activity is malicious — but almost every malicious activity is rare and identifiable
+- Not every intensive activity is malicious, but almost every malicious activity is rare and identifiable
 - The model makes human judgment **more efficient**, not obsolete
 
 **Suggested implementation:**
 - Retrain pipeline on organizational data
 - Establish human feedback loop: analyst flags → model update
 - Continuous retraining on monthly rolling windows
+
+---
+
+## References
+
+1. CERT Division. *Insider Threat Test Dataset*. Software Engineering Institute, Carnegie Mellon University.  
+   https://www.sei.cmu.edu/library/insider-threat-test-dataset/
+
+2. Eldardiry, H., et al. (2013). *Multi-domain information fusion for insider threat detection*. IEEE Security and Privacy Workshops.
+
+3. IBM Security. *Cost of a Data Breach Report* (2025).  
+   https://www.ibm.com/reports/data-breach
+
+4. IBM. *What are Insider Threats?*  
+   https://www.ibm.com/think/topics/insider-threats
+
+5. Joyce, R. J., Raff, E., & Nicholas, C. (2021). *A Framework for Cluster and Classifier Evaluation in the Absence of Reference Labels*. In NeurIPS 2020 Workshop.
+
+6. Legg, P. A., et al. (2017). *Automated insider threat detection using user and role-based profile assessment*. IEEE Security & Privacy.
+
+7. Mourer, A., Forest, F., Lebbah, M., Azzag, H., & Lacaille, J. (2023). *Selecting the Number of Clusters K with a Stability Trade-off: An Internal Validation Criterion*. In Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD), pp. 210-222.
+
+8. Ponemon Institute. *The Security Risk Organizations Should Not Ignore: Careless, Negligent and Malicious Insiders*.  
+   https://www.ponemon.org/news-updates/blog/security/the-security-risk-organizations-should-not-ignore-careless-negligent-and-malicious-insiders.html
+
+9. Teng, H.-W., Kang, M.-H., Lee, I.-H., & Bai, L.-C. (2024). *Bridging accuracy and interpretability: A rescaled cluster-then-predict approach for enhanced credit scoring*. International Review of Financial Analysis, 91, 103005.
 
 ---
 
